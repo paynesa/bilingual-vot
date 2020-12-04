@@ -1,4 +1,7 @@
 ﻿Speaker,Language,File,Word,Consonant,VOT
 ferfulice_1,Eng,20325,piggies,p,0.06253651916308206
 ferfulice_1,Eng,20325,pasta,p,0.097232220417300258
-ferfulice_1,Eng,20709,peepee,,0.026417419036514761
+ferfulice_1,Eng,20709,peepee,p,0.026417419036514761
+ferfulice_1,Eng,20325,be,b,0.021525119931237346
+ferfulice_1,Eng,20325,bear,b,0.029778510993662355
+ferfulice_2,Eng,20709,birthday,b,0.022910347738291419
