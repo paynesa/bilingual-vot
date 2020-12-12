@@ -24,17 +24,12 @@ b_spa <- spanish %>% filter(Consonant == 'b')
 p_eng <- english %>% filter(Consonant == 'p')
 p_spa <- spanish %>% filter(Consonant == 'p')
 
-
+#weird ggplot stuff from the internet
 specie <- c(rep("d", 2), rep("t", 2), rep("b", 2), rep("p", 2))
 condition <- rep(c("Spanish" , "English") , 4)
 value <- c(mean(d_spa$VOT), mean(d_eng$VOT), mean(t_spa$VOT),mean(t_eng$VOT),  mean(b_spa$VOT),mean(b_eng$VOT),  mean(p_spa$VOT),  mean(p_eng$VOT))
 data <- data.frame(specie,condition,value)
-
-
-
-
 theme_set(theme_bw())
-# Grouped
 ggplot(data, aes(fill=condition, y=value, x=specie)) + 
-  geom_bar(position="dodge", stat="identity") + xlab("") + ylab("VOT (seconds)") + ggtitle("Hello")
+  geom_bar(position="dodge", stat="identity") + xlab("") + scale_fill_brewer(palette="Dark2")+ ylab("VOT (seconds)") + ggtitle("Average VOT across 3 Simultaneous Spanish-English Bilingual 2-year-olds")
 
