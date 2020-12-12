@@ -34,3 +34,26 @@ theme_set(theme_bw())
 ggplot(data, aes(fill=condition, y=value, x=specie)) + 
   geom_bar(position="dodge", stat="identity") + xlab("") + scale_fill_brewer(palette="Dark2")+ ylab("VOT (seconds)") +  ggtitle("Average VOT across 3 Simultaneous Spanish-English Bilingual 2-year-olds") +geom_errorbar(aes(ymin=value-sd, ymax=value+sd), size=0.25, width=0.25, position=position_dodge(.9)) 
 
+# Now for each speaker separately 
+curr_eng <-deu_eng
+curr_spa <-deu_spa
+d_eng <- curr_eng %>% filter(Consonant == 'd')
+d_spa <- curr_spa %>% filter(Consonant == 'd')
+t_eng <- curr_eng %>% filter(Consonant == 't')
+t_spa <- curr_spa %>% filter(Consonant == 't')
+b_eng <- curr_eng %>% filter(Consonant == 'b')
+b_spa <- curr_spa %>% filter(Consonant == 'b')
+p_eng <- curr_eng %>% filter(Consonant == 'p')
+p_spa <- curr_spa %>% filter(Consonant == 'p')
+specie <- c(rep("d", 2), rep("t", 2), rep("b", 2), rep("p", 2))
+condition <- rep(c("Spanish" , "English") , 4)
+value <- c(mean(d_spa$VOT), mean(d_eng$VOT), mean(t_spa$VOT),mean(t_eng$VOT),  mean(b_spa$VOT),mean(b_eng$VOT),  mean(p_spa$VOT),  mean(p_eng$VOT))
+sd <- c(sd(d_spa$VOT), sd(d_eng$VOT), sd(t_spa$VOT), sd(t_eng$VOT), sd(b_spa$VOT), sd(b_eng$VOT), sd(p_spa$VOT),  sd(p_eng$VOT))
+data <- data.frame(specie,condition,value)
+theme_set(theme_bw())
+ggplot(data, aes(fill=condition, y=value, x=specie)) + 
+  geom_bar(position="dodge", stat="identity") + xlab("") + scale_fill_brewer(palette="Paired")+ ylab("VOT (seconds)") +  ggtitle("Average VOT across Multiple Utterances for Deuchar Child") +geom_errorbar(aes(ymin=value-sd, ymax=value+sd), size=0.25, width=0.25, position=position_dodge(.9)) 
+
+
+
+
