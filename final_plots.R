@@ -79,76 +79,57 @@ ggplot(data, aes(fill=condition, y=value, x=specie)) +
 
 
 
+#alveolar stops for each speaker 
+f1_eng_d <- english_d %>% filter(Speaker == 'ferfulice_1')
+f1_eng_t <- english_t %>% filter(Speaker == 'ferfulice_1')
+f2_eng_d <- english_d %>% filter(Speaker == 'ferfulice_2')
+f2_eng_t <- english_t %>% filter(Speaker == 'ferfulice_2')
+deuchar_eng_d <- english_d %>% filter(Speaker == 'deuchar')
+deuchar_eng_t <- english_t %>% filter(Speaker == 'deuchar')
+carla_eng_d <- english_d %>% filter(Speaker == 'perez_carla')
+carla_eng_t <- english_t %>% filter(Speaker == 'perez_carla')
+shiela_eng_d <- english_d %>% filter(Speaker == 'perez_shiela')
+shiela_eng_t <- english_t %>% filter(Speaker == 'perez_shiela')
+tina_eng_d <- english_d %>% filter(Speaker == 'perez_tina')
+tina_eng_t <- english_t %>% filter(Speaker == 'perez_tina')
 
+f1_spa_d <- spanish_d %>% filter(Speaker == 'ferfulice_1')
+f1_spa_t <- spanish_t %>% filter(Speaker == 'ferfulice_1')
+f2_spa_d <- spanish_d %>% filter(Speaker == 'ferfulice_2')
+f2_spa_t <- spanish_t  %>% filter(Speaker == 'ferfulice_2')
+deuchar_spa_d <- spanish_d %>% filter(Speaker == 'deuchar')
+deuchar_spa_t <- spanish_t %>% filter(Speaker == 'deuchar')
+carla_spa_d <- spanish_d %>% filter(Speaker == 'perez_carla')
+carla_spa_t <- spanish_t %>% filter(Speaker == 'perez_carla')
+shiela_spa_d <- spanish_d %>% filter(Speaker == 'perez_shiela')
+shiela_spa_t <- spanish_t  %>% filter(Speaker == 'perez_shiela')
+tina_spa_d <- spanish_d %>% filter(Speaker == 'perez_tina')
+tina_spa_t <- spanish_t  %>% filter(Speaker == 'perez_tina')
 
-
-
-
-
-
-
-
-#get the spanish data for each speaker separately
-fer1_spa <- spanish %>% filter(Speaker == 'ferfulice_1')
-fer2_spa <- spanish %>% filter(Speaker == 'ferfulice_2')
-deu_spa <- spanish %>% filter(Speaker == 'deuchar')
-alberto_spa <-spanish %>% filter(Speaker == 'perez_alberto')
-
-
-
-
-
-
-
-#get the spanish data for each speaker separately 
-fer1_spa <- spanish %>% filter(Speaker == 'ferfulice_1')
-fer2_spa <- spanish %>% filter(Speaker == 'ferfulice_2')
-deu_spa <- spanish %>% filter(Speaker == 'deuchar')
-
-#get the english data for each speaker separately 
-fer1_eng <- english %>% filter(Speaker == 'ferfulice_1')
-fer2_eng <- english %>% filter(Speaker == 'ferfulice_2')
-deu_eng <- english %>% filter(Speaker == 'deuchar')
-
-#extract segments individually 
-d_eng <- english %>% filter(Consonant == 'd')
-d_spa <- spanish %>% filter(Consonant == 'd')
-t_eng <- english %>% filter(Consonant == 't')
-t_spa <- spanish %>% filter(Consonant == 't')
-b_eng <- english %>% filter(Consonant == 'b')
-b_spa <- spanish %>% filter(Consonant == 'b')
-p_eng <- english %>% filter(Consonant == 'p')
-p_spa <- spanish %>% filter(Consonant == 'p')
-
-#weird ggplot stuff from the internet
-specie <- c(rep("d", 2), rep("t", 2), rep("b", 2), rep("p", 2))
-condition <- rep(c("Spanish" , "English") , 4)
-value <- c(mean(d_spa$VOT), mean(d_eng$VOT), mean(t_spa$VOT),mean(t_eng$VOT),  mean(b_spa$VOT),mean(b_eng$VOT),  mean(p_spa$VOT),  mean(p_eng$VOT))
-sd <- c(sd(d_spa$VOT), sd(d_eng$VOT), sd(t_spa$VOT), sd(t_eng$VOT), sd(b_spa$VOT), sd(b_eng$VOT), sd(p_spa$VOT),  sd(p_eng$VOT))
+specie <- c(rep("F1", 4), rep("F2", 4), rep("M (Deuchar)", 4), rep("Carla", 4),  rep("Sheila", 4),  rep("Tina", 4))
+condition <- rep(c("English /d/", "English /t/", "Spanish /d/", "Spanish /t/") , 6)
+value <- c(mean(f1_eng_d$VOT), mean(f1_eng_t$VOT), mean(f1_spa_d$VOT), mean(f1_spa_t$VOT),mean(f2_eng_d$VOT), mean(f2_eng_t$VOT), mean(f2_spa_d$VOT), mean(f2_spa_t$VOT), mean(deuchar_eng_d$VOT), mean(deuchar_eng_t$VOT), mean(deuchar_spa_d$VOT), mean(deuchar_spa_t$VOT), mean(carla_eng_d$VOT), mean(carla_eng_t$VOT), mean(carla_spa_d$VOT), mean(carla_spa_t$VOT), mean(shiela_eng_d$VOT), mean(shiela_eng_t$VOT), mean(shiela_spa_d$VOT), mean(shiela_spa_t$VOT), mean(tina_eng_d$VOT), mean(tina_eng_t$VOT), mean(tina_spa_d$VOT), mean(tina_spa_t$VOT))
+sd <- c(sd(f1_eng_d$VOT), sd(f1_eng_t$VOT), sd(f1_spa_d$VOT), sd(f1_spa_t$VOT), sd(f2_eng_d$VOT), sd(f2_eng_t$VOT), sd(f2_spa_d$VOT), sd(f2_spa_t$VOT), sd(deuchar_eng_d$VOT), sd(deuchar_eng_t$VOT), sd(deuchar_spa_d$VOT), sd(deuchar_spa_t$VOT), sd(carla_eng_d$VOT), sd(carla_eng_t$VOT), sd(carla_spa_d$VOT), sd(carla_spa_t$VOT), sd(shiela_eng_d$VOT), sd(shiela_eng_t$VOT), sd(shiela_spa_d$VOT), sd(shiela_spa_t$VOT),sd(tina_eng_d$VOT), sd(tina_eng_t$VOT), sd(tina_spa_d$VOT),sd(tina_spa_t$VOT))
 data <- data.frame(specie,condition,value)
 theme_set(theme_bw())
 ggplot(data, aes(fill=condition, y=value, x=specie)) + 
-  geom_bar(position="dodge", stat="identity") + xlab("") + scale_fill_brewer(palette="Dark2")+ ylab("VOT (seconds)") +  ggtitle("Average VOT across 3 Simultaneous Spanish-English Bilingual 2-year-olds") +geom_errorbar(aes(ymin=value-sd, ymax=value+sd), size=0.25, width=0.25, position=position_dodge(.9)) 
+  geom_bar(position="dodge", stat="identity") + xlab("") + scale_fill_brewer(palette="Dark2")+ ylab("VOT (seconds)") +  ggtitle("Alveolar Stop VOT, Separated by Speaker") +geom_errorbar(aes(ymin=value-sd, ymax=value+sd), size=0.25, width=0.25, position=position_dodge(.9))+theme( plot.title = element_text(hjust = 0.5))
 
-# Now for each speaker separately 
-curr_eng <-deu_eng
-curr_spa <-deu_spa
-d_eng <- curr_eng %>% filter(Consonant == 'd')
-d_spa <- curr_spa %>% filter(Consonant == 'd')
-t_eng <- curr_eng %>% filter(Consonant == 't')
-t_spa <- curr_spa %>% filter(Consonant == 't')
-b_eng <- curr_eng %>% filter(Consonant == 'b')
-b_spa <- curr_spa %>% filter(Consonant == 'b')
-p_eng <- curr_eng %>% filter(Consonant == 'p')
-p_spa <- curr_spa %>% filter(Consonant == 'p')
-specie <- c(rep("d", 2), rep("t", 2), rep("b", 2), rep("p", 2))
-condition <- rep(c("Spanish" , "English") , 4)
-value <- c(mean(d_spa$VOT), mean(d_eng$VOT), mean(t_spa$VOT),mean(t_eng$VOT),  mean(b_spa$VOT),mean(b_eng$VOT),  mean(p_spa$VOT),  mean(p_eng$VOT))
-sd <- c(sd(d_spa$VOT), sd(d_eng$VOT), sd(t_spa$VOT), sd(t_eng$VOT), sd(b_spa$VOT), sd(b_eng$VOT), sd(p_spa$VOT),  sd(p_eng$VOT))
-data <- data.frame(specie,condition,value)
-theme_set(theme_bw())
-ggplot(data, aes(fill=condition, y=value, x=specie)) + 
-  geom_bar(position="dodge", stat="identity") + xlab("") + scale_fill_brewer(palette="Paired")+ ylab("VOT (seconds)") +  ggtitle("Average VOT across Multiple Utterances for Deuchar Child") +geom_errorbar(aes(ymin=value-sd, ymax=value+sd), size=0.25, width=0.25, position=position_dodge(.9)) 
+#nationality t-tests for English 
+american_eng_b <- english_b %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' & Speaker != 'perez_tina')
+spanish_eng_b <- english_b %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' | Speaker == 'perez_tina')
+t.test(american_eng_b$VOT, spanish_eng_b$VOT, paired = FALSE, conf.level = 0.95)
+american_eng_p <- english_p %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' & Speaker != 'perez_tina')
+spanish_eng_p <- english_p %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' | Speaker == 'perez_tina')
+t.test(american_eng_p$VOT, spanish_eng_p$VOT, paired = FALSE, conf.level = 0.95)
+american_eng_d <- english_d %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' & Speaker != 'perez_tina')
+spanish_eng_d <- english_d %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' | Speaker == 'perez_tina')
+t.test(american_eng_d$VOT, spanish_eng_d$VOT, paired = FALSE, conf.level = 0.95)
+american_eng_t <- english_t %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' & Speaker != 'perez_tina')
+spanish_eng_t <- english_t %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' | Speaker == 'perez_tina')
+t.test(american_eng_t$VOT, spanish_eng_t$VOT, paired = FALSE, conf.level = 0.95)
+
+
 
 
 
