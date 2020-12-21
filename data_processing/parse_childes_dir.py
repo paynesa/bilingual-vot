@@ -1,4 +1,5 @@
-"""This script processes all files produced by a 2-year-old in a given directory
+""" Written by Sarah Brogden Payne, Novemeber 2020 
+Processes all files produced by a 2-year-old in a given directory
 and outputs the results to a text file containing only the child's productions"""
 
 import os
@@ -23,6 +24,7 @@ def process(dir : str, out_file : str, speakers: int):
 def main():
     """The main functionality of the program"""
     parser = argparse.ArgumentParser()
+    # we include arguments for the directory of data to parse, the file to output to, and the number of speakers (if there are multiple)
     parser.add_argument("directory", type=str, help="The directory to process")
     parser.add_argument("outfile", type=str, help="The file to output the processed data to")
     parser.add_argument("-num_speakers", type=int, help="The number of children in the data", default=1)
