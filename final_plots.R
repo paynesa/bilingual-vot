@@ -115,7 +115,7 @@ theme_set(theme_bw())
 ggplot(data, aes(fill=condition, y=value, x=specie)) + 
   geom_bar(position="dodge", stat="identity") + xlab("") + scale_fill_brewer(palette="Dark2")+ ylab("VOT (seconds)") +  ggtitle("Alveolar Stop VOT, Separated by Speaker") +geom_errorbar(aes(ymin=value-sd, ymax=value+sd), size=0.25, width=0.25, position=position_dodge(.9))+theme( plot.title = element_text(hjust = 0.5))
 
-#nationality t-tests for English 
+#birthplace t-tests for English 
 american_eng_b <- english_b %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' & Speaker != 'perez_tina')
 spanish_eng_b <- english_b %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' | Speaker == 'perez_tina')
 t.test(american_eng_b$VOT, spanish_eng_b$VOT, paired = FALSE, conf.level = 0.95)
@@ -130,6 +130,112 @@ spanish_eng_t <- english_t %>% filter(Speaker == 'ferfulice_2' | Speaker == 'fer
 t.test(american_eng_t$VOT, spanish_eng_t$VOT, paired = FALSE, conf.level = 0.95)
 
 
+#birthplace t-tests for Spanish
+american_spa_b <- spanish_b %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' & Speaker != 'perez_tina')
+spanish_spa_b <- spanish_b %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' | Speaker == 'perez_tina')
+t.test(american_spa_b$VOT, spanish_spa_b$VOT, paired = FALSE, conf.level = 0.95)
+american_spa_p <- spanish_p %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' & Speaker != 'perez_tina')
+spanish_spa_p <- spanish_p %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' | Speaker == 'perez_tina')
+t.test(american_spa_p$VOT, spanish_spa_p$VOT, paired = FALSE, conf.level = 0.95)
+american_spa_d <- spanish_d %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' & Speaker != 'perez_tina')
+spanish_spa_d <- spanish_d %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' | Speaker == 'perez_tina')
+t.test(american_spa_d$VOT, spanish_spa_d$VOT, paired = FALSE, conf.level = 0.95)
+american_spa_t <- spanish_t %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' & Speaker != 'perez_tina')
+spanish_spa_t <- spanish_t %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' | Speaker == 'perez_tina')
+t.test(american_spa_t$VOT, spanish_spa_t$VOT, paired = FALSE, conf.level = 0.95)
+
+#nationality t-tests for English 
+american_eng_b <- english_b %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' )
+spanish_eng_b <- english_b %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1')
+t.test(american_eng_b$VOT, spanish_eng_b$VOT, paired = FALSE, conf.level = 0.95)
+american_eng_p <- english_p %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1')
+spanish_eng_p <- english_p %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' )
+t.test(american_eng_p$VOT, spanish_eng_p$VOT, paired = FALSE, conf.level = 0.95)
+american_eng_d <- english_d %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' )
+spanish_eng_d <- english_d %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' )
+t.test(american_eng_d$VOT, spanish_eng_d$VOT, paired = FALSE, conf.level = 0.95)
+american_eng_t <- english_t %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' )
+spanish_eng_t <- english_t %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' )
+t.test(american_eng_t$VOT, spanish_eng_t$VOT, paired = FALSE, conf.level = 0.95)
+
+
+#nationality t-tests for Spanish
+american_spa_b <- spanish_b %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' )
+spanish_spa_b <- spanish_b %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' )
+t.test(american_spa_b$VOT, spanish_spa_b$VOT, paired = FALSE, conf.level = 0.95)
+american_spa_p <- spanish_p %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' )
+spanish_spa_p <- spanish_p %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' )
+t.test(american_spa_p$VOT, spanish_spa_p$VOT, paired = FALSE, conf.level = 0.95)
+american_spa_d <- spanish_d %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1')
+spanish_spa_d <- spanish_d %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1')
+t.test(american_spa_d$VOT, spanish_spa_d$VOT, paired = FALSE, conf.level = 0.95)
+american_spa_t <- spanish_t %>% filter(Speaker != 'ferfulice_2' & Speaker != 'ferfulice_1' )
+spanish_spa_t <- spanish_t %>% filter(Speaker == 'ferfulice_2' | Speaker == 'ferfulice_1' )
+t.test(american_spa_t$VOT, spanish_spa_t$VOT, paired = FALSE, conf.level = 0.95)
+
+
+
+
+
+#mother's L1 t-tests for English 
+american_eng_b <- english_b %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina')
+spanish_eng_b <- english_b %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' | Speaker == 'perez_tina')
+t.test(american_eng_b$VOT, spanish_eng_b$VOT, paired = FALSE, conf.level = 0.95)
+american_eng_p <- english_p %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina')
+spanish_eng_p <- english_p %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' | Speaker == 'perez_tina')
+t.test(american_eng_p$VOT, spanish_eng_p$VOT, paired = FALSE, conf.level = 0.95)
+american_eng_d <- english_d %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina')
+spanish_eng_d <- english_d %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' | Speaker == 'perez_tina')
+t.test(american_eng_d$VOT, spanish_eng_d$VOT, paired = FALSE, conf.level = 0.95)
+american_eng_t <- english_t %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina' )
+spanish_eng_t <- english_t %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' | Speaker == 'perez_tina')
+t.test(american_eng_t$VOT, spanish_eng_t$VOT, paired = FALSE, conf.level = 0.95)
+
+
+#mother's L1 t-tests for Spanish
+american_spa_b <- spanish_b %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina' )
+spanish_spa_b <- spanish_b %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' | Speaker == 'perez_tina')
+t.test(american_spa_b$VOT, spanish_spa_b$VOT, paired = FALSE, conf.level = 0.95)
+american_spa_p <- spanish_p %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina' )
+spanish_spa_p <- spanish_p %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' | Speaker == 'perez_tina')
+t.test(american_spa_p$VOT, spanish_spa_p$VOT, paired = FALSE, conf.level = 0.95)
+american_spa_d <- spanish_d %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina')
+spanish_spa_d <- spanish_d %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' | Speaker == 'perez_tina')
+t.test(american_spa_d$VOT, spanish_spa_d$VOT, paired = FALSE, conf.level = 0.95)
+american_spa_t <- spanish_t %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina')
+spanish_spa_t <- spanish_t %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' | Speaker == 'perez_tina')
+t.test(american_spa_t$VOT, spanish_spa_t$VOT, paired = FALSE, conf.level = 0.95)
+
+
+
+#father's L1 t-tests for English 
+american_eng_b <- english_b %>% filter(Speaker == 'perez_alberto' | Speaker == 'perez_carla' | speaker)
+spanish_eng_b <- english_b %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' & Speaker != 'perez_tina')
+t.test(american_eng_b$VOT, spanish_eng_b$VOT, paired = FALSE, conf.level = 0.95)
+american_eng_p <- english_p %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina')
+spanish_eng_p <- english_p %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' & Speaker != 'perez_tina')
+t.test(american_eng_p$VOT, spanish_eng_p$VOT, paired = FALSE, conf.level = 0.95)
+american_eng_d <- english_d %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina')
+spanish_eng_d <- english_d %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' & Speaker != 'perez_tina' )
+t.test(american_eng_d$VOT, spanish_eng_d$VOT, paired = FALSE, conf.level = 0.95)
+american_eng_t <- english_t %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina' )
+spanish_eng_t <- english_t %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' & Speaker != 'perez_tina')
+t.test(american_eng_t$VOT, spanish_eng_t$VOT, paired = FALSE, conf.level = 0.95)
+
+
+#father's L1 t-tests for Spanish
+american_spa_b <- spanish_b %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina' )
+spanish_spa_b <- spanish_b %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' & Speaker != 'perez_tina')
+t.test(american_spa_b$VOT, spanish_spa_b$VOT, paired = FALSE, conf.level = 0.95)
+american_spa_p <- spanish_p %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina' )
+spanish_spa_p <- spanish_p %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' & Speaker != 'perez_tina' )
+t.test(american_spa_p$VOT, spanish_spa_p$VOT, paired = FALSE, conf.level = 0.95)
+american_spa_d <- spanish_d %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina')
+spanish_spa_d <- spanish_d %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' & Speaker != 'perez_tina')
+t.test(american_spa_d$VOT, spanish_spa_d$VOT, paired = FALSE, conf.level = 0.95)
+american_spa_t <- spanish_t %>% filter(Speaker != 'perez_shiela' & Speaker != 'perez_carla' & Speaker != 'perez_tina')
+spanish_spa_t <- spanish_t %>% filter(Speaker == 'perez_shiela' | Speaker == 'perez_carla' & Speaker != 'perez_tina')
+t.test(american_spa_t$VOT, spanish_spa_t$VOT, paired = FALSE, conf.level = 0.95)
 
 
 
